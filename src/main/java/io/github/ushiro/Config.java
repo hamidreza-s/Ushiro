@@ -12,7 +12,7 @@ public class Config
 {
     private static Properties config;
 
-    public static Properties getConfig() {
+    public static Properties getInstance() {
         if(config != null) {
             return config;
         } else {
@@ -30,19 +30,39 @@ public class Config
     }
 
     public static String getProperty(String key) {
-        return getConfig().getProperty(key);
+        return getInstance().getProperty(key);
     }
 
     public static String getHttpPort() {
-        return getProperty("http_port");
+        return getProperty("http.port");
     }
 
     public static String getHttpHost() {
-        return getProperty("http_host");
+        return getProperty("http.host");
     }
 
     public static String getHttpIdleTimeout() {
-        return getProperty("http_idle_timeout");
+        return getProperty("http.idle.timeout");
+    }
+
+    public static String getLongUrlValidRegex() {
+        return getProperty("long.url.valid.regex");
+    }
+
+    public static int getLongUrlValidLengthMin() {
+        return Integer.parseInt(getProperty("long.url.valid.length.min"));
+    }
+
+    public static int getLongUrlValidLengthMax() {
+        return Integer.parseInt(getProperty("long.url.valid.length.max"));
+    }
+
+    public static String getShortUrlChars() {
+        return getProperty("short.url.chars");
+    }
+
+    public static int getShortUrlLength() {
+        return Integer.parseInt(getProperty("short.url.length"));
     }
 
 }
