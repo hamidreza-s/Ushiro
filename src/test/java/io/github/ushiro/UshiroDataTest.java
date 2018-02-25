@@ -2,13 +2,9 @@ package io.github.ushiro;
 
 import io.github.ushiro.data.DataDriver;
 import io.github.ushiro.data.DataModel;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runners.MethodSorters;
 import static org.junit.Assert.assertTrue;
-
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UshiroDataTest {
@@ -39,5 +35,4 @@ public class UshiroDataTest {
         assertTrue(createdAt == retrievingDataModel.getCreatedAt());
         assertTrue(viewCount == retrievingDataModel.getViewCount());
     }
-
 }

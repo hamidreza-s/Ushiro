@@ -6,7 +6,6 @@ import org.junit.*;
 import org.junit.runners.MethodSorters;
 import static org.junit.Assert.*;
 
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UshiroCacheTest {
 
@@ -41,6 +40,4 @@ public class UshiroCacheTest {
             assertTrue(cache.get(i) == i);
         }
     }
-
-
 }

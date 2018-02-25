@@ -9,9 +9,8 @@ import org.junit.*;
 import org.junit.runners.MethodSorters;
 import static org.junit.Assert.*;
 
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class UshiroServerApiTest {
+public class UshiroHttpServerApiTest {
 
     private static HttpClient httpClient = new HttpClient(new SslContextFactory());
     private static String serverAddress = "http://" + Config.getHttpHost() + ":" + Config.getHttpPort();
@@ -81,5 +80,4 @@ public class UshiroServerApiTest {
         assertEquals(expectedViewCount, infoResponseObject.getInt("view-count"));
         assertTrue(keyUrl.equals(infoResponseObject.getString("key-url")));
     }
-
 }

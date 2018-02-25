@@ -1,13 +1,26 @@
 package io.github.ushiro.server;
 
 import io.github.ushiro.Config;
+import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 
-public class Server {
+/**
+ * The class is responsible for starting and stopping the
+ * HTTP server. Also, it sets the servlet handler mappings and
+ * its connector. The host, port, and other configurations are
+ * retrieved from config file. It keeps the server instance
+ * as a singleton object in a static field.
+ */
+public class HttpServer {
 
-    private static org.eclipse.jetty.server.Server httpServer;
+    private static Server httpServer;
 
+    /**
+     * Configure and start the HTTP server if it not started
+     *
+     * @throws Exception
+     */
     public static void start() throws Exception {
         if(httpServer == null || httpServer.isStopped()) {
             String httpHost = Config.getHttpHost();
@@ -33,6 +46,11 @@ public class Server {
         }
     }
 
+    /**
+     * Stop the HTTP server if it is running
+     *
+     * @throws Exception
+     */
     public static void stop() throws Exception {
         if(httpServer != null || httpServer.isRunning()) {
             httpServer.stop();
@@ -40,6 +58,11 @@ public class Server {
         }
     }
 
+    /**
+     * Keep the tread waiting to handle HTTP requests
+     *
+     * @throws InterruptedException
+     */
     public static void join() throws InterruptedException {
         httpServer.join();
     }

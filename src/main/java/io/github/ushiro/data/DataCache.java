@@ -4,6 +4,12 @@ import io.github.ushiro.Config;
 import io.github.ushiro.cache.Cache;
 import io.github.ushiro.cache.CacheFactory;
 
+/**
+ * A class which is responsible for keeping the cache
+ * object which is a singleton object for storing the
+ * recently retrieved data models. It is used for
+ * faster access to the URL data model.
+ */
 public class DataCache {
 
     private static Cache<String, DataModel> instance;

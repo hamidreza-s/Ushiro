@@ -1,7 +1,12 @@
 package io.github.ushiro.cache;
 
-import io.github.ushiro.data.DataModel;
-
+/**
+ * The cache interface to have a consistent API for
+ * different types of cache implementation.
+ *
+ * @param <KeyType> The generic type of cache table key
+ * @param <ValueType> The generic type of cache table value
+ */
 public interface Cache<KeyType, ValueType> {
     public enum Strategy {
         LRU,
