@@ -88,21 +88,21 @@ public class Config {
     }
 
     /**
-     * Get the accepted character list of the short URL
+     * Get the accepted character list of the short URLs
      */
     public static String getShortUrlChars() {
         return getProperty("short.url.chars");
     }
 
     /**
-     * Get the accepted length of the short URL
+     * Get the accepted length of the short URLs
      */
     public static int getShortUrlLength() {
         return Integer.parseInt(getProperty("short.url.length"));
     }
 
     /**
-     * Check if data must the persisted in a database
+     * Check if data must be persisted in a database
      */
     public static boolean isDataPersistent() {
         return Boolean.parseBoolean(getProperty("data.persistent"));
