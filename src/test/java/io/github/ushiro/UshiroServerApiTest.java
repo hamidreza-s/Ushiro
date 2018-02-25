@@ -1,7 +1,6 @@
 package io.github.ushiro;
 
 import javax.servlet.http.HttpServletResponse;
-
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.json.JSONObject;
 import org.eclipse.jetty.client.HttpClient;
@@ -71,7 +70,7 @@ public class UshiroServerApiTest {
 
 
         int expectedViewCount = 10;
-        for(int i = 1; i < expectedViewCount; i++) {
+        for(int i = 0; i < expectedViewCount; i++) {
             ContentResponse lookupResponse = httpClient.GET(shortUrl);
             assertEquals(HttpServletResponse.SC_OK, lookupResponse.getStatus());
         }

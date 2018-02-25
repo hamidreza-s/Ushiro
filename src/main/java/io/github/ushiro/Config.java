@@ -1,11 +1,6 @@
 package io.github.ushiro;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Config
@@ -71,6 +66,14 @@ public class Config
 
     public static String getDataPersistentNodes() {
         return getProperty("data.persistent.nodes");
+    }
+
+    public static int getDataCacheSize() {
+        return Integer.parseInt(getProperty("data.cache.size"));
+    }
+
+    public static String getDataCacheEvictionStrategy() {
+        return getProperty("data.cache.eviction.strategy");
     }
 
 }

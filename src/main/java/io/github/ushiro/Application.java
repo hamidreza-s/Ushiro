@@ -1,5 +1,6 @@
 package io.github.ushiro;
 
+import io.github.ushiro.cache.CacheFactory;
 import io.github.ushiro.server.Server;
 import io.github.ushiro.data.DataDriver;
 
@@ -8,7 +9,6 @@ public class Application
 {
     private final static int EXIT_CODE_SUCCESS = 0;
     private final static int EXIT_CODE_FAILURE = 1;
-    private static org.eclipse.jetty.server.Server httpServer;
 
     public static void start() throws Exception {
         DataDriver.start();

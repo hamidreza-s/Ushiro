@@ -68,19 +68,12 @@ public class DataDriver {
                 String longUrl = resultRow.getString("long_url");
                 long createAt = resultRow.getLong("created_at");
                 int viewCount = resultRow.getInt("view_count");
-                DataModel dataModel = new DataModel(keyUrl, longUrl, createAt, viewCount);
-
-                dataModel.incrementViewCount();
-                store(dataModel);
-
-                return dataModel;
+                return new DataModel(keyUrl, longUrl, createAt, viewCount);
             } else {
                 return null;
             }
         } else {
-            DataModel dataModel = localData.get(keyUrl);
-            dataModel.incrementViewCount();
-            return dataModel;
+            return localData.get(keyUrl);
         }
     }
 
