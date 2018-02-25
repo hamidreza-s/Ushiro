@@ -4,7 +4,7 @@ import io.github.ushiro.Config;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 
-public class HttpServer {
+public class Server {
 
     private static org.eclipse.jetty.server.Server httpServer;
 

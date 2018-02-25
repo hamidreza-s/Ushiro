@@ -1,8 +1,8 @@
 package io.github.ushiro.server;
 
 import io.github.ushiro.Config;
-import io.github.ushiro.data.UrlModel;
-import io.github.ushiro.data.AccessLayer;
+import io.github.ushiro.data.DataModel;
+import io.github.ushiro.data.DataDriver;
 import io.github.ushiro.utils.RandomGenerator;
 import io.github.ushiro.utils.UrlValidator;
 import org.json.JSONObject;
@@ -34,8 +34,8 @@ public class CreateHandler extends HttpServlet {
         String baseUrl = "http://" + Config.getHttpHost() + ":" + Config.getHttpPort();
         String shortUrl = baseUrl + "/" + keyUrl;
 
-        UrlModel urlModel = new UrlModel(keyUrl, longUrl, timestamp, 0);
-        AccessLayer.store(urlModel);
+        DataModel dataModel = new DataModel(keyUrl, longUrl, timestamp, 0);
+        DataDriver.store(dataModel);
 
         JSONObject responseJson = new JSONObject();
         responseJson.put("short-url", shortUrl);
