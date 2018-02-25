@@ -1,4 +1,4 @@
-# Ushiro
+# Ushiro [![Build Status](https://travis-ci.org/hamidreza-s/Ushiro.svg?branch=master)](https://travis-ci.org/hamidreza-s/Ushiro)
 
 Ushiro is a URL shortener service prototype. It supports the following operations:
 - **Create**: Take a long URL, generate a short URL and return it in response.
