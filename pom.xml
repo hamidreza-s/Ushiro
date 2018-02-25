@@ -24,6 +24,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -37,17 +38,32 @@
       <artifactId>jetty-server</artifactId>
       <version>9.4.8.v20171121</version>
     </dependency>
-      <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-client</artifactId>
-        <version>9.4.8.v20171121</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+      <version>9.4.8.v20171121</version>
+    </dependency>
+    <dependency>
+        <groupId>com.datastax.cassandra</groupId>
+        <artifactId>cassandra-driver-core</artifactId>
+        <version>3.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20180130</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-client</artifactId>
+      <version>9.4.8.v20171121</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
-       <artifactId>junit</artifactId>
-       <version>4.12</version>
-       <scope>test</scope>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

@@ -65,4 +65,12 @@ public class Config
         return Integer.parseInt(getProperty("short.url.length"));
     }
 
+    public static boolean isDataPersistent() {
+        return Boolean.parseBoolean(getProperty("data.persistent"));
+    }
+
+    public static String getDataPersistentNodes() {
+        return getProperty("data.persistent.nodes");
+    }
+
 }

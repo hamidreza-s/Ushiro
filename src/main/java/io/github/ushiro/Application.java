@@ -1,7 +1,7 @@
 package io.github.ushiro;
 
-import io.github.ushiro.server.HttpServer;
-import io.github.ushiro.data.AccessLayer;
+import io.github.ushiro.server.Server;
+import io.github.ushiro.data.DataDriver;
 
 
 public class Application
@@ -11,19 +11,19 @@ public class Application
     private static org.eclipse.jetty.server.Server httpServer;
 
     public static void start() throws Exception {
-        AccessLayer.start();
-        HttpServer.start();
+        DataDriver.start();
+        Server.start();
     }
 
     public static void stop() throws Exception {
-        AccessLayer.stop();
-        HttpServer.stop();
+        DataDriver.stop();
+        Server.stop();
     }
 
     public static void main(String[] args) {
         try {
             start();
-            HttpServer.join();
+            Server.join();
         } catch (Exception exception) {
             exception.printStackTrace();
             System.exit(EXIT_CODE_FAILURE);
