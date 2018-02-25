@@ -22,7 +22,7 @@ public class Server {
 
             ServletHandler servletHandler = new ServletHandler();
             servletHandler.addServletWithMapping(PingHandler.class, "/ping");
-            servletHandler.addServletWithMapping(InfoHandler.class, "/info");
+            servletHandler.addServletWithMapping(InfoHandler.class, "/info/*");
             servletHandler.addServletWithMapping(CreateHandler.class, "/create/*");
             servletHandler.addServletWithMapping(LookupHandler.class, "/*");
 

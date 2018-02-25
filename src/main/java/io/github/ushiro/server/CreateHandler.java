@@ -37,10 +37,11 @@ public class CreateHandler extends HttpServlet {
         DataModel dataModel = new DataModel(keyUrl, longUrl, timestamp, 0);
         DataDriver.store(dataModel);
 
-        JSONObject responseJson = new JSONObject();
-        responseJson.put("short-url", shortUrl);
-        responseJson.put("long-url", longUrl);
-        response.getWriter().print(responseJson.toString());
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("key-url", keyUrl);
+        responseObject.put("short-url", shortUrl);
+        responseObject.put("long-url", longUrl);
+        response.getWriter().print(responseObject.toString());
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }

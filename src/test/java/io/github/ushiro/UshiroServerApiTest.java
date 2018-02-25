@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class UshiroControllerTest {
+public class UshiroServerApiTest {
 
     private static HttpClient httpClient = new HttpClient(new SslContextFactory());
     private static String serverAddress = "http://" + Config.getHttpHost() + ":" + Config.getHttpPort();
@@ -42,7 +42,7 @@ public class UshiroControllerTest {
                 .param("long-url", "http://www.dice.se")
                 .send();
         JSONObject responseObject = new JSONObject(response.getContentAsString());
-        assertEquals(response.getStatus(), HttpServletResponse.SC_OK);
+        assertEquals(HttpServletResponse.SC_OK, response.getStatus());
         assertTrue(responseObject.has("long-url"));
         assertTrue(responseObject.has("short-url"));
     }
@@ -56,14 +56,31 @@ public class UshiroControllerTest {
         String shortUrl = createResponseObject.getString("short-url");
 
         ContentResponse lookupResponse = httpClient.GET(shortUrl);
-        assertEquals(lookupResponse.getStatus(), HttpServletResponse.SC_OK);
+        assertEquals(HttpServletResponse.SC_OK, lookupResponse.getStatus());
         assertTrue(lookupResponse.getContentAsString().equals("pong"));
     }
 
     @Test
-    public void testValidURL() throws Exception {
+    public void testInfoRequest() throws Exception {
+        ContentResponse createResponse = httpClient.POST(serverAddress + "/create")
+                .param("long-url", "http://www.ea.com")
+                .send();
+        JSONObject createResponseObject = new JSONObject(createResponse.getContentAsString());
+        String keyUrl = createResponseObject.getString("key-url");
+        String shortUrl = createResponseObject.getString("short-url");
 
+
+        int expectedViewCount = 10;
+        for(int i = 1; i < expectedViewCount; i++) {
+            ContentResponse lookupResponse = httpClient.GET(shortUrl);
+            assertEquals(HttpServletResponse.SC_OK, lookupResponse.getStatus());
+        }
+
+        ContentResponse infoResponse = httpClient.GET(serverAddress + "/info/" + keyUrl);
+        JSONObject infoResponseObject = new JSONObject(infoResponse.getContentAsString());
+        assertEquals(HttpServletResponse.SC_OK, infoResponse.getStatus());
+        assertEquals(expectedViewCount, infoResponseObject.getInt("view-count"));
+        assertTrue(keyUrl.equals(infoResponseObject.getString("key-url")));
     }
-
 
 }
